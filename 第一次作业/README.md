@@ -21,36 +21,36 @@ import sys
 //Setup the container object
 
 c = lxc.Container("oslab")
-if c.defined:
-    print("Container already exists", file=sys.stderr)
-    sys.exit(1)
+if c.defined:<br>
+    print("Container already exists", file=sys.stderr)<br>
+    sys.exit(1)<br>
 
 //Create the container rootfs
 
-if not c.create(template="debian"):
-    print("Failed to create the container rootfs", file=sys.stderr)
-    sys.exit(1)
+if not c.create(template="debian"):<br>
+    print("Failed to create the container rootfs", file=sys.stderr)<br>
+    sys.exit(1)<br>
 
 //Start the container
 
-if not c.start():
-    print("Failed to start the container", file=sys.stderr)
-    sys.exit(1)
+if not c.start():<br>
+    print("Failed to start the container", file=sys.stderr)<br>
+    sys.exit(1)<br>
 
 //Write the file
 
-c.attach_wait(lxc.attach_run_command,["bash","-c",'echo "莫国辉\n 1500012788" >Hello-Container'])
+c.attach_wait(lxc.attach_run_command,["bash","-c",'echo "莫国辉\n 1500012788" >Hello-Container'])<br>
 
 //Stop the container
 
-if not c.shutdown(30):
-    print("Failed to cleanly shutdown the container, forcing.")
-    if not c.stop():
-        print("Failed to kill the container", file=sys.stderr)
-        sys.exit(1)
+if not c.shutdown(30):<br>
+    print("Failed to cleanly shutdown the container, forcing.")<br>
+    if not c.stop():<br>
+        print("Failed to kill the container", file=sys.stderr)<br>
+        sys.exit(1)<br>
 
 //Destroy the container
 
-if not c.destroy():
-    print("Failed to destroy the container.", file=sys.stderr)
-    sys.exit(1)
+if not c.destroy():<br>
+    print("Failed to destroy the container.", file=sys.stderr)<br>
+    sys.exit(1)<br>
